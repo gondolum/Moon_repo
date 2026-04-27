@@ -213,30 +213,6 @@ function terrainMaterial(detailMix) {
   });
 }
 
-function createAstronautMarker() {
-  const group = new THREE.Group();
-  const suit = new THREE.MeshStandardMaterial({ color: 0xf2eee2, roughness: 0.82, metalness: 0.02 });
-  const visor = new THREE.MeshStandardMaterial({ color: 0x1b2435, roughness: 0.42, metalness: 0.35 });
-  const body = new THREE.Mesh(new THREE.CapsuleGeometry(0.18, 0.46, 5, 10), suit);
-  const head = new THREE.Mesh(new THREE.SphereGeometry(0.17, 16, 10), suit);
-  const visorMesh = new THREE.Mesh(new THREE.SphereGeometry(0.105, 12, 8), visor);
-  const shadow = new THREE.Mesh(
-    new THREE.CircleGeometry(0.36, 24),
-    new THREE.MeshBasicMaterial({ color: 0x000000, transparent: true, opacity: 0.22 }),
-  );
-
-  body.position.y = 0.38;
-  head.position.y = 0.78;
-  visorMesh.position.set(0, 0.78, 0.13);
-  shadow.rotation.x = -Math.PI / 2;
-  shadow.position.y = 0.02;
-
-  group.add(shadow, body, head, visorMesh);
-  group.scale.setScalar(0.55);
-  group.visible = false;
-  return group;
-}
-
 function initRocks() {
   const rockMaterial = new THREE.MeshStandardMaterial({
     color: 0x8a877f,
@@ -250,38 +226,6 @@ function initRocks() {
     rockPool.push(rock);
     terrainRoot.add(rock);
   }
-}
-
-function createAstronautMarker() {
-  const group = new THREE.Group();
-  const suit = new THREE.MeshStandardMaterial({
-    color: 0xf2eee1,
-    roughness: 0.86,
-    metalness: 0,
-  });
-  const visor = new THREE.MeshStandardMaterial({
-    color: 0x0b0d12,
-    roughness: 0.35,
-    metalness: 0.2,
-  });
-  const body = new THREE.Mesh(new THREE.CapsuleGeometry(0.12, 0.48, 6, 12), suit);
-  const helmet = new THREE.Mesh(new THREE.SphereGeometry(0.16, 16, 10), suit);
-  const face = new THREE.Mesh(new THREE.SphereGeometry(0.105, 12, 8), visor);
-  const shadow = new THREE.Mesh(
-    new THREE.CircleGeometry(0.34, 24),
-    new THREE.MeshBasicMaterial({ color: 0x030303, transparent: true, opacity: 0.36 }),
-  );
-
-  body.position.y = 0.48;
-  helmet.position.y = 0.88;
-  face.position.set(0, 0.9, 0.12);
-  shadow.rotation.x = -Math.PI / 2;
-  shadow.scale.set(1.4, 0.5, 1);
-
-  group.add(body, helmet, face, shadow);
-  group.scale.setScalar(0.52);
-  group.visible = false;
-  return group;
 }
 
 function updateTerrain(force = false) {
