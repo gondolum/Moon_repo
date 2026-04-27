@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Lunar Surface Explorer</title>
+  </head>
+  <body>
+    <div id="app">
+      <canvas class="moon-canvas" id="moon-canvas" aria-label="Interactive lunar surface explorer"></canvas>
+
+      <main class="hud" aria-label="Lunar visualization overlay">
+        <section class="top-panel" aria-label="Scene introduction">
+          <p class="eyebrow">Moon Explorer</p>
+          <h1>Procedural lunar close-up LOD</h1>
+          <p class="intro">
+            Descend from orbit into selectable Apollo terrain patches with generated crater relief,
+            regolith grain, rocks, and close-range displacement.
+          </p>
+        </section>
+
+        <p class="hint">Mouse wheel or slider to descend. Drag in orbital view to rotate.</p>
+
+        <footer class="bottom-dock" aria-label="Lunar controls and landing sites">
+          <section class="card site-card" aria-live="polite">
+            <div class="site-card__header">
+              <div>
+                <p class="eyebrow">Selected site</p>
+                <h2 id="site-name">Tranquility Base</h2>
+                <p class="site-meta" id="site-type">Apollo 11 landing site</p>
+              </div>
+              <div class="zoom-readout">
+                <span>Altitude</span>
+                <strong id="altitude-readout">-- km</strong>
+              </div>
+            </div>
+            <p class="site-description" id="site-description">
+              Zoom toward the marker to transition from orbital view into detailed procedural terrain.
+            </p>
+          </section>
+
+          <section class="card control-card">
+            <p class="eyebrow">Landing sites</p>
+            <nav class="site-list" aria-label="Moon landing site selector" id="site-buttons"></nav>
+            <label class="slider-row" for="zoom-slider">
+              <span>Orbit</span>
+              <input id="zoom-slider" type="range" min="0.55" max="170" step="0.05" value="72" />
+              <span>Surface</span>
+            </label>
+            <div class="telemetry">
+              <div>
+                <span>LOD mode</span>
+                <strong id="lod-readout">orbital</strong>
+              </div>
+              <div>
+                <span>Detail</span>
+                <strong>Procedural craters</strong>
+              </div>
+              <div>
+                <span>Scale cue</span>
+                <strong>Person-level descent</strong>
+              </div>
+            </div>
+            <button class="site-button" id="focus-site" type="button">Descend to selected site</button>
+          </section>
+        </footer>
+      </main>
+    </div>
+    <script type="module" src="/src/main.js"></script>
+  </body>
+</html>
